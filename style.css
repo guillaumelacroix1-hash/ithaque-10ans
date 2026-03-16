@@ -138,6 +138,13 @@
   width: 100% !important;
   height: 100% !important;
   border: none;
+  pointer-events: none;
+}
+
+/* Controls must sit above the iframe */
+.ithaque-controls {
+  z-index: 20;
+  pointer-events: all;
 }
 
 /* ── Video controls bar ── */
