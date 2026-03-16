@@ -86,28 +86,34 @@
 }
 
 .ithaque-btn {
-  display: inline-flex;
-  align-items: center;
-  gap: 8px;
-  background: transparent;
-  color: var(--teal);
-  border: 2px solid var(--teal);
-  padding: 11px 24px;
-  font-family: var(--font-heading);
-  font-size: 14px;
-  font-weight: 700;
-  letter-spacing: 0.5px;
-  text-decoration: none;
-  cursor: pointer;
-  transition: background 0.25s, color 0.25s, transform 0.15s;
-  align-self: flex-start;
+  display: inline-flex !important;
+  align-items: center !important;
+  gap: 8px !important;
+  background: transparent !important;
+  color: var(--teal) !important;
+  border: 2px solid var(--teal) !important;
+  border-radius: 0 !important;
+  padding: 11px 24px !important;
+  font-family: var(--font-heading) !important;
+  font-size: 14px !important;
+  font-weight: 700 !important;
+  letter-spacing: 0.5px !important;
+  text-decoration: none !important;
+  cursor: pointer !important;
+  transition: background 0.25s, color 0.25s, transform 0.15s !important;
+  align-self: flex-start !important;
+  box-shadow: none !important;
+  outline: none !important;
 }
 
-.ithaque-btn:hover {
-  background: var(--teal);
-  color: #ffffff;
-  transform: translateX(3px);
-  text-decoration: none;
+.ithaque-btn:hover,
+.ithaque-btn:focus {
+  background: var(--teal) !important;
+  color: #ffffff !important;
+  transform: translateX(3px) !important;
+  text-decoration: none !important;
+  border-color: var(--teal) !important;
+  box-shadow: none !important;
 }
 
 /* ── Right panel – video ── */
@@ -204,7 +210,7 @@
 /* ── Bottom teal accent bar ── */
 .ithaque-accent-bar {
   height: 6px;
-  background: linear-gradient(90deg, var(--teal) 0%, #00c4c6 50%, var(--teal) 100%);
+  background: #5FB4A9 !important;
 }
 
 /* ── Responsive ── */
