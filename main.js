@@ -1,6 +1,6 @@
 /**
  * Ithaque Médical – 10 ans
- * YouTube IFrame API controller + responsive sizing
+ * YouTube IFrame API controller + sound toggle + fullscreen
  */
 
 (function () {
@@ -13,27 +13,20 @@
   /* ── YouTube IFrame API bootstrap ── */
   function loadYouTubeAPI() {
     if (window.YT && window.YT.Player) {
-      onYouTubeIframeAPIReady();
+      initPlayer();
       return;
     }
-
-    // If another script already queued the API callback, chain it
     var existingCallback = window.onYouTubeIframeAPIReady;
     window.onYouTubeIframeAPIReady = function () {
       if (typeof existingCallback === 'function') existingCallback();
       initPlayer();
     };
-
     if (!document.getElementById('yt-iframe-api')) {
       var tag = document.createElement('script');
       tag.id = 'yt-iframe-api';
       tag.src = 'https://www.youtube.com/iframe_api';
       document.head.appendChild(tag);
     }
-  }
-
-  function onYouTubeIframeAPIReady() {
-    initPlayer();
   }
 
   /* ── Init YouTube player ── */
@@ -47,34 +40,26 @@
         autoplay: 1,
         mute: 1,
         loop: 1,
-        playlist: VIDEO_ID,   // required for loop
+        playlist: VIDEO_ID,
         controls: 0,
         modestbranding: 1,
         rel: 0,
         playsinline: 1,
         enablejsapi: 1,
-        origin: window.location.origin || '*',
-        iv_load_policy: 3,    // hide annotations
+        origin: window.location.origin || 'http://localhost',
+        iv_load_policy: 3,
         fs: 0
       },
       events: {
-        onReady: onPlayerReady,
-        onStateChange: onPlayerStateChange
+        onReady: function (e) {
+          e.target.mute();
+          e.target.playVideo();
+        },
+        onStateChange: function (e) {
+          if (e.data === YT.PlayerState.ENDED) e.target.playVideo();
+        }
       }
     });
-  }
-
-  function onPlayerReady(event) {
-    event.target.mute();
-    event.target.playVideo();
-    sizeVideo();
-  }
-
-  function onPlayerStateChange(event) {
-    // Restart if ended (belt-and-suspenders for loop)
-    if (event.data === YT.PlayerState.ENDED) {
-      event.target.playVideo();
-    }
   }
 
   /* ── Sound toggle ── */
@@ -84,7 +69,6 @@
 
     btn.addEventListener('click', function () {
       if (!player) return;
-
       if (isMuted) {
         player.unMute();
         player.setVolume(80);
@@ -99,59 +83,47 @@
     });
   }
 
-  /* ── Responsive: cover the right panel in 16:9 ── */
-  function sizeVideo() {
-    var wrapper = document.querySelector('.ithaque-video-wrapper');
-    var playerEl = document.getElementById('ithaque-player');
-    if (!wrapper || !playerEl) return;
+  /* ── Fullscreen ── */
+  function initFullscreenButton() {
+    var btn = document.getElementById('ithaque-fs-btn');
+    if (!btn) return;
 
-    var w = wrapper.offsetWidth;
-    var h = wrapper.offsetHeight;
+    btn.addEventListener('click', function () {
+      var target = document.querySelector('.ithaque-video-container');
+      if (!target) return;
 
-    // 16:9 intrinsic
-    var targetW = Math.max(w, h * (16 / 9));
-    var targetH = Math.max(h, w * (9 / 16));
+      var requestFS =
+        target.requestFullscreen ||
+        target.webkitRequestFullscreen ||
+        target.mozRequestFullScreen ||
+        target.msRequestFullscreen;
 
-    // Cover: pick the dimension that overshoots, then scale the other
-    if (w / h > 16 / 9) {
-      targetW = w;
-      targetH = w * (9 / 16);
-    } else {
-      targetH = h;
-      targetW = h * (16 / 9);
-    }
-
-    playerEl.style.width = Math.ceil(targetW) + 'px';
-    playerEl.style.height = Math.ceil(targetH) + 'px';
-
-    // Re-apply iframe size if player is ready
-    var iframe = playerEl.querySelector('iframe');
-    if (iframe) {
-      iframe.style.width = Math.ceil(targetW) + 'px';
-      iframe.style.height = Math.ceil(targetH) + 'px';
-    }
-  }
-
-  /* ── Resize observer ── */
-  function watchResize() {
-    if (window.ResizeObserver) {
-      var wrapper = document.querySelector('.ithaque-video-wrapper');
-      if (wrapper) {
-        new ResizeObserver(sizeVideo).observe(wrapper);
+      if (requestFS) {
+        requestFS.call(target);
       }
-    } else {
-      window.addEventListener('resize', sizeVideo);
-    }
+    });
+
+    // Update icon when fullscreen state changes
+    var exitIcon = '<svg viewBox="0 0 24 24"><path d="M5 16h3v3h2v-5H5v2zm3-8H5v2h5V5H8v3zm6 11h2v-3h3v-2h-5v5zm2-11V5h-2v5h5V8h-3z"/></svg>';
+    var enterIcon = '<svg viewBox="0 0 24 24"><path d="M7 14H5v5h5v-2H7v-3zm-2-4h2V7h3V5H5v5zm12 7h-3v2h5v-5h-2v3zM14 5v2h3v3h2V5h-5z"/></svg>';
+
+    document.addEventListener('fullscreenchange', function () {
+      btn.innerHTML = document.fullscreenElement ? exitIcon : enterIcon;
+      btn.setAttribute('aria-label', document.fullscreenElement ? 'Quitter le plein écran' : 'Plein écran');
+    });
+    document.addEventListener('webkitfullscreenchange', function () {
+      var isFS = document.webkitFullscreenElement;
+      btn.innerHTML = isFS ? exitIcon : enterIcon;
+    });
   }
 
   /* ── Entry point ── */
   function init() {
     initSoundButton();
-    watchResize();
+    initFullscreenButton();
     loadYouTubeAPI();
   }
 
-  // Run after DOM is ready
   if (document.readyState === 'loading') {
     document.addEventListener('DOMContentLoaded', init);
   } else {
