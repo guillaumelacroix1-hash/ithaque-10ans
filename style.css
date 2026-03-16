@@ -1,0 +1,225 @@
+/* ================================================
+   Ithaque Médical – Section 10 ans
+   Embed-safe CSS (all selectors scoped to .ithaque-10ans)
+   ================================================ */
+
+@import url('https://fonts.googleapis.com/css2?family=Raleway:wght@400;600;700;800&family=Open+Sans:wght@400;600&display=swap');
+
+.ithaque-10ans {
+  --teal: #00989A;
+  --teal-dark: #007a7c;
+  --teal-light: #e6f7f7;
+  --text-dark: #1c2b2b;
+  --text-body: #3d4f4f;
+  --bg: #ffffff;
+  --font-heading: 'Raleway', sans-serif;
+  --font-body: 'Open Sans', sans-serif;
+
+  width: 100%;
+  background: var(--bg);
+  box-sizing: border-box;
+  font-family: var(--font-body);
+}
+
+.ithaque-10ans *,
+.ithaque-10ans *::before,
+.ithaque-10ans *::after {
+  box-sizing: border-box;
+}
+
+/* ── Layout grid ── */
+.ithaque-inner {
+  display: grid;
+  grid-template-columns: 45% 55%;
+  min-height: 520px;
+}
+
+/* ── Left panel ── */
+.ithaque-left {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  padding: 60px 56px 60px 64px;
+  background: #ffffff;
+  position: relative;
+}
+
+.ithaque-left::after {
+  content: '';
+  position: absolute;
+  right: 0;
+  top: 10%;
+  height: 80%;
+  width: 1px;
+  background: linear-gradient(to bottom, transparent, #d0e8e8 20%, #d0e8e8 80%, transparent);
+}
+
+.ithaque-logo {
+  height: 52px;
+  width: auto;
+  margin-bottom: 28px;
+  display: block;
+}
+
+.ithaque-title {
+  font-family: var(--font-heading);
+  font-size: clamp(22px, 2.4vw, 30px);
+  font-weight: 800;
+  color: var(--teal);
+  line-height: 1.25;
+  margin: 0 0 20px 0;
+  letter-spacing: -0.3px;
+}
+
+.ithaque-text {
+  font-family: var(--font-body);
+  font-size: clamp(13px, 1vw, 15px);
+  color: var(--text-body);
+  line-height: 1.75;
+  margin: 0 0 14px 0;
+}
+
+.ithaque-text:last-of-type {
+  margin-bottom: 32px;
+}
+
+.ithaque-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  background: transparent;
+  color: var(--teal);
+  border: 2px solid var(--teal);
+  padding: 11px 24px;
+  font-family: var(--font-heading);
+  font-size: 14px;
+  font-weight: 700;
+  letter-spacing: 0.5px;
+  text-decoration: none;
+  cursor: pointer;
+  transition: background 0.25s, color 0.25s, transform 0.15s;
+  align-self: flex-start;
+}
+
+.ithaque-btn:hover {
+  background: var(--teal);
+  color: #ffffff;
+  transform: translateX(3px);
+  text-decoration: none;
+}
+
+/* ── Right panel – video ── */
+.ithaque-right {
+  position: relative;
+  background: #0d1a1a;
+  overflow: hidden;
+}
+
+.ithaque-video-wrapper {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  min-height: 300px;
+}
+
+/* YouTube iframe fills the panel maintaining 16:9 but covering the space */
+#ithaque-player {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  /* Will be sized by JS to cover while maintaining 16:9 */
+}
+
+#ithaque-player iframe {
+  display: block;
+  border: none;
+}
+
+/* ── Sound button ── */
+.ithaque-sound-btn {
+  position: absolute;
+  bottom: 20px;
+  right: 20px;
+  z-index: 10;
+  width: 44px;
+  height: 44px;
+  border-radius: 50%;
+  background: rgba(0, 0, 0, 0.55);
+  border: 2px solid rgba(255, 255, 255, 0.3);
+  color: #ffffff;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: background 0.2s, border-color 0.2s, transform 0.15s;
+  backdrop-filter: blur(4px);
+  -webkit-backdrop-filter: blur(4px);
+  padding: 0;
+}
+
+.ithaque-sound-btn:hover {
+  background: rgba(0, 152, 154, 0.75);
+  border-color: rgba(255, 255, 255, 0.7);
+  transform: scale(1.1);
+}
+
+.ithaque-sound-btn svg {
+  width: 20px;
+  height: 20px;
+  fill: currentColor;
+}
+
+.ithaque-sound-btn .icon-unmuted {
+  display: none;
+}
+
+.ithaque-sound-btn.is-unmuted .icon-muted {
+  display: none;
+}
+
+.ithaque-sound-btn.is-unmuted .icon-unmuted {
+  display: block;
+}
+
+/* ── Bottom teal accent bar ── */
+.ithaque-accent-bar {
+  height: 6px;
+  background: linear-gradient(90deg, var(--teal) 0%, #00c4c6 50%, var(--teal) 100%);
+}
+
+/* ── Responsive ── */
+@media (max-width: 900px) {
+  .ithaque-inner {
+    grid-template-columns: 1fr;
+  }
+
+  .ithaque-left {
+    padding: 48px 32px 40px;
+    order: 2;
+  }
+
+  .ithaque-left::after {
+    display: none;
+  }
+
+  .ithaque-right {
+    order: 1;
+    min-height: 0;
+    aspect-ratio: 16 / 9;
+  }
+
+  .ithaque-video-wrapper {
+    min-height: 0;
+  }
+}
+
+@media (max-width: 480px) {
+  .ithaque-left {
+    padding: 36px 20px 32px;
+  }
+
+  .ithaque-title {
+    font-size: 20px;
+  }
+}
