@@ -89,17 +89,18 @@
     if (!btn) return;
 
     btn.addEventListener('click', function () {
-      var target = document.querySelector('.ithaque-video-container');
-      if (!target) return;
+      var isFS = document.fullscreenElement || document.webkitFullscreenElement;
 
-      var requestFS =
-        target.requestFullscreen ||
-        target.webkitRequestFullscreen ||
-        target.mozRequestFullScreen ||
-        target.msRequestFullscreen;
-
-      if (requestFS) {
-        requestFS.call(target);
+      if (isFS) {
+        var exitFS = document.exitFullscreen || document.webkitExitFullscreen ||
+                     document.mozCancelFullScreen || document.msExitFullscreen;
+        if (exitFS) exitFS.call(document);
+      } else {
+        var target = document.querySelector('.ithaque-video-container');
+        if (!target) return;
+        var requestFS = target.requestFullscreen || target.webkitRequestFullscreen ||
+                        target.mozRequestFullScreen || target.msRequestFullscreen;
+        if (requestFS) requestFS.call(target);
       }
     });
 
