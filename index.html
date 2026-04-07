@@ -7,6 +7,12 @@
   <link rel="stylesheet" href="style.css">
   <style>
     body { margin: 0; padding: 0; }
+    /* Critical: prevent logo flash at native SVG size before style.css loads */
+    .ithaque-logo {
+      height: 52px;
+      width: auto;
+      display: block;
+    }
   </style>
 </head>
 <body>
@@ -20,6 +26,8 @@
           src="https://medical.ithaque-compagnie.fr/wp-content/uploads/sites/3/2017/07/logo_ithaque_medical.svg"
           alt="Ithaque Médical"
           class="ithaque-logo"
+          width="200"
+          height="52"
         >
         <h2 class="ithaque-title">Ithaque Médical à fêté ses 10 ans</h2>
         <p class="ithaque-text">
