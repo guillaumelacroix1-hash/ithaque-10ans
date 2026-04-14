@@ -55,6 +55,14 @@
         onReady: function (e) {
           e.target.mute();
           e.target.playVideo();
+          if (isMobile) {
+            var iframe = e.target.getIframe();
+            if (iframe) {
+              iframe.style.setProperty('pointer-events', 'auto', 'important');
+              iframe.setAttribute('allow', 'autoplay; encrypted-media; fullscreen; picture-in-picture');
+              iframe.setAttribute('allowfullscreen', 'true');
+            }
+          }
         },
         onStateChange: function (e) {
           if (e.data === YT.PlayerState.ENDED) e.target.playVideo();
@@ -121,6 +129,10 @@
 
   /* ── Entry point ── */
   function init() {
+    if (isMobile) {
+      var controls = document.querySelector('.ithaque-controls');
+      if (controls) controls.style.display = 'none';
+    }
     initSoundButton();
     initFullscreenButton();
     loadYouTubeAPI();

@@ -34,7 +34,7 @@
     var link = document.createElement('link');
     link.id = 'ithaque-10ans-styles';
     link.rel = 'stylesheet';
-    link.href = BASE_URL + 'style.css';
+    link.href = BASE_URL + 'style.css?v=3';
     document.head.appendChild(link);
 
     // Google Fonts (fail-safe: only load if not already present)
@@ -149,7 +149,18 @@
         origin: window.location.origin
       },
       events: {
-        onReady: function (e) { e.target.mute(); e.target.playVideo(); },
+        onReady: function (e) {
+          e.target.mute();
+          e.target.playVideo();
+          if (isMobile) {
+            var iframe = e.target.getIframe();
+            if (iframe) {
+              iframe.style.setProperty('pointer-events', 'auto', 'important');
+              iframe.setAttribute('allow', 'autoplay; encrypted-media; fullscreen; picture-in-picture');
+              iframe.setAttribute('allowfullscreen', 'true');
+            }
+          }
+        },
         onStateChange: function (e) {
           if (e.data === YT.PlayerState.ENDED) e.target.playVideo();
         }
@@ -214,6 +225,10 @@
   function boot() {
     injectStyles();
     injectHTML();
+    if (isMobile) {
+      var controls = document.querySelector('.ithaque-controls');
+      if (controls) controls.style.display = 'none';
+    }
     initSoundButton();
     initFullscreenButton();
     loadYouTubeAPI();
