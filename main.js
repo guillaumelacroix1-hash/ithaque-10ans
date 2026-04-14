@@ -9,6 +9,7 @@
   var VIDEO_ID = '_p-57K78HXQ';
   var player = null;
   var isMuted = true;
+  var isMobile = /iPhone|iPad|iPod|Android/i.test(navigator.userAgent) || window.innerWidth <= 900;
 
   /* ── YouTube IFrame API bootstrap ── */
   function loadYouTubeAPI() {
@@ -41,14 +42,14 @@
         mute: 1,
         loop: 1,
         playlist: VIDEO_ID,
-        controls: 0,
+        controls: isMobile ? 1 : 0,
         modestbranding: 1,
         rel: 0,
         playsinline: 1,
         enablejsapi: 1,
         origin: window.location.origin || 'http://localhost',
         iv_load_policy: 3,
-        fs: 0
+        fs: isMobile ? 1 : 0
       },
       events: {
         onReady: function (e) {

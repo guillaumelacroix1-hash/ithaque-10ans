@@ -24,6 +24,7 @@
   })();
 
   var VIDEO_ID = '_p-57K78HXQ';
+  var isMobile = /iPhone|iPad|iPod|Android/i.test(navigator.userAgent) || window.innerWidth <= 900;
 
   /* ══════════════════════════════
      1. Inject CSS
@@ -60,7 +61,7 @@
       '        alt="Ithaque M\u00e9dical"',
       '        class="ithaque-logo"',
       '      >',
-      '      <h2 class="ithaque-title">Ithaque M\u00e9dical \u00e0 f\u00eat\u00e9 ses 10 ans</h2>',
+      '      <h2 class="ithaque-title">Ithaque M\u00e9dical a f\u00eat\u00e9 ses 10 ans</h2>',
       '      <p class="ithaque-text">',
       '        Retour en images sur cette soir\u00e9e inoubliable du mardi 25 novembre 2025',
       '        au Mus\u00e9e national de la Marine, c\u00e9l\u00e9brant les 10 ans d\u2019Ithaque M\u00e9dical.',
@@ -141,8 +142,8 @@
       videoId: VIDEO_ID,
       playerVars: {
         autoplay: 1, mute: 1, loop: 1, playlist: VIDEO_ID,
-        controls: 0, modestbranding: 1, rel: 0, playsinline: 1,
-        enablejsapi: 1, iv_load_policy: 3, fs: 0,
+        controls: isMobile ? 1 : 0, modestbranding: 1, rel: 0, playsinline: 1,
+        enablejsapi: 1, iv_load_policy: 3, fs: isMobile ? 1 : 0,
         origin: window.location.origin
       },
       events: {

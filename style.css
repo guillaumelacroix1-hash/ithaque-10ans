@@ -231,6 +231,16 @@
   .ithaque-right {
     order: 1;
   }
+
+  /* Mobile: use YouTube's native controls instead of custom overlay */
+  #ithaque-player,
+  #ithaque-player iframe {
+    pointer-events: auto;
+  }
+
+  .ithaque-controls {
+    display: none;
+  }
 }
 
 @media (max-width: 480px) {
