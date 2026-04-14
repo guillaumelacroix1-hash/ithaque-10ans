@@ -24,7 +24,7 @@
   })();
 
   var VIDEO_ID = '_p-57K78HXQ';
-  var isMobile = /iPhone|iPad|iPod|Android/i.test(navigator.userAgent) || window.innerWidth <= 900;
+  var isIOS = /iPad|iPhone|iPod/.test(navigator.userAgent) || (navigator.platform === 'MacIntel' && navigator.maxTouchPoints > 1);
 
   /* ══════════════════════════════
      1. Inject CSS
@@ -34,7 +34,7 @@
     var link = document.createElement('link');
     link.id = 'ithaque-10ans-styles';
     link.rel = 'stylesheet';
-    link.href = BASE_URL + 'style.css?v=3';
+    link.href = BASE_URL + 'style.css?v=4';
     document.head.appendChild(link);
 
     // Google Fonts (fail-safe: only load if not already present)
@@ -144,15 +144,15 @@
       videoId: VIDEO_ID,
       playerVars: {
         autoplay: 1, mute: 1, loop: 1, playlist: VIDEO_ID,
-        controls: isMobile ? 1 : 0, modestbranding: 1, rel: 0, playsinline: 1,
-        enablejsapi: 1, iv_load_policy: 3, fs: isMobile ? 1 : 0,
+        controls: isIOS ? 1 : 0, modestbranding: 1, rel: 0, playsinline: 1,
+        enablejsapi: 1, iv_load_policy: 3, fs: isIOS ? 1 : 0,
         origin: window.location.origin
       },
       events: {
         onReady: function (e) {
           e.target.mute();
           e.target.playVideo();
-          if (isMobile) {
+          if (isIOS) {
             var iframe = e.target.getIframe();
             if (iframe) {
               iframe.style.setProperty('pointer-events', 'auto', 'important');
@@ -225,7 +225,7 @@
   function boot() {
     injectStyles();
     injectHTML();
-    if (isMobile) {
+    if (isIOS) {
       var controls = document.querySelector('.ithaque-controls');
       if (controls) controls.style.display = 'none';
     }
