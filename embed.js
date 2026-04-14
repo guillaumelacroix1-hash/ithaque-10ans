@@ -60,6 +60,8 @@
       '        src="https://medical.ithaque-compagnie.fr/wp-content/uploads/sites/3/2017/07/logo_ithaque_medical.svg"',
       '        alt="Ithaque M\u00e9dical"',
       '        class="ithaque-logo"',
+      '        width="200" height="52"',
+      '        style="height:52px;width:auto;display:block"',
       '      >',
       '      <h2 class="ithaque-title">Ithaque M\u00e9dical a f\u00eat\u00e9 ses 10 ans</h2>',
       '      <p class="ithaque-text">',
