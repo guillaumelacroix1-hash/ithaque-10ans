@@ -275,7 +275,7 @@
 
 /* ── Left visual ── */
 .ithaque-argos-visual {
-  background: #ffffff;
+  background: var(--argos-bleu);
   display: flex;
   align-items: center;
   justify-content: center;
@@ -284,20 +284,28 @@
   min-height: 340px;
 }
 
-.ithaque-argos-mockup {
+/* Wrapper du logo + badge — largeur fixe pour aligner les éléments
+   verticalement (la fin du logo Ithaque Médical s'aligne sur le D
+   d'ARGOSMED grâce au justify-content: flex-end du .ithaque-argos-by). */
+.ithaque-argos-logowrap {
+  display: flex;
+  flex-direction: column;
   width: 100%;
   max-width: 320px;
+}
+
+.ithaque-argos-mockup {
+  width: 100%;
   height: auto;
   display: block;
   aspect-ratio: 1 / 1;
 }
 
-/* "by Ithaque Médical" badge, bottom-right of the visual */
+/* "by Ithaque Médical" — aligné à droite, fin alignée sur le D d'ARGOSMED */
 .ithaque-argos-by {
-  position: absolute;
-  bottom: 20px;
-  right: 24px;
+  margin-top: 14px;
   display: flex;
+  justify-content: flex-end;
   align-items: center;
   gap: 8px;
 }
@@ -307,7 +315,7 @@
   font-size: 13px;
   font-weight: 400;
   font-style: italic;
-  color: #6b7575;
+  color: #5a6868;
   letter-spacing: 0.2px;
 }
 
@@ -442,17 +450,16 @@
 
   .ithaque-argos-visual {
     order: 1;
-    padding: 40px 24px 60px;
+    padding: 40px 24px;
     min-height: 280px;
   }
 
-  .ithaque-argos-mockup {
+  .ithaque-argos-logowrap {
     max-width: 220px;
   }
 
   .ithaque-argos-by {
-    bottom: 16px;
-    right: 16px;
+    margin-top: 10px;
   }
 
   .ithaque-argos-by-logo {
