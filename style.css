@@ -275,7 +275,7 @@
 
 /* ── Left visual ── */
 .ithaque-argos-visual {
-  background: var(--argos-bleu);
+  background: #ffffff;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -290,6 +290,31 @@
   height: auto;
   display: block;
   aspect-ratio: 1 / 1;
+}
+
+/* "by Ithaque Médical" badge, bottom-right of the visual */
+.ithaque-argos-by {
+  position: absolute;
+  bottom: 20px;
+  right: 24px;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.ithaque-argos-by-text {
+  font-family: var(--font-body);
+  font-size: 13px;
+  font-weight: 400;
+  font-style: italic;
+  color: #6b7575;
+  letter-spacing: 0.2px;
+}
+
+.ithaque-argos-by-logo {
+  height: 22px;
+  width: auto;
+  display: block;
 }
 
 /* ── Right content ── */
@@ -313,34 +338,54 @@
   background: linear-gradient(to bottom, transparent, #d0e8e8 20%, #d0e8e8 80%, transparent);
 }
 
-.ithaque-argos-logo {
-  height: 38px;
-  width: auto;
-  margin-bottom: 24px;
-  display: block;
-  align-self: flex-start;
-}
-
 .ithaque-argos-title {
   font-family: var(--font-heading);
-  font-size: clamp(22px, 2.4vw, 30px);
+  font-size: clamp(24px, 2.6vw, 32px);
   font-weight: 800;
   color: var(--argos-dark);
-  line-height: 1.25;
+  line-height: 1.2;
   margin: 0 0 20px 0;
   letter-spacing: -0.3px;
 }
 
 .ithaque-argos-text {
   font-family: var(--font-body);
-  font-size: clamp(13px, 1vw, 15px);
+  font-size: clamp(14px, 1.05vw, 16px);
   color: var(--text-body);
-  line-height: 1.75;
-  margin: 0 0 14px 0;
+  line-height: 1.7;
+  margin: 0 0 20px 0;
 }
 
-.ithaque-argos-text:last-of-type {
-  margin-bottom: 32px;
+/* Bullet list — checkmarks dans une pastille bleue Argosmed */
+.ithaque-argos-list {
+  list-style: none;
+  margin: 0 0 32px 0;
+  padding: 0;
+}
+
+.ithaque-argos-list li {
+  position: relative;
+  padding-left: 32px;
+  margin-bottom: 12px;
+  font-family: var(--font-body);
+  font-size: clamp(14px, 1.05vw, 16px);
+  color: var(--text-body);
+  line-height: 1.55;
+}
+
+.ithaque-argos-list li::before {
+  content: '';
+  position: absolute;
+  left: 0;
+  top: 4px;
+  width: 18px;
+  height: 18px;
+  border-radius: 50%;
+  background-color: var(--argos-bleu);
+  background-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%23160E25' stroke-width='4' stroke-linecap='round' stroke-linejoin='round'><polyline points='20 6 9 17 4 12'/></svg>");
+  background-size: 11px 11px;
+  background-position: center;
+  background-repeat: no-repeat;
 }
 
 .ithaque-argos-btn {
@@ -397,12 +442,25 @@
 
   .ithaque-argos-visual {
     order: 1;
-    padding: 36px 24px;
+    padding: 40px 24px 60px;
     min-height: 280px;
   }
 
   .ithaque-argos-mockup {
     max-width: 220px;
+  }
+
+  .ithaque-argos-by {
+    bottom: 16px;
+    right: 16px;
+  }
+
+  .ithaque-argos-by-logo {
+    height: 18px;
+  }
+
+  .ithaque-argos-by-text {
+    font-size: 12px;
   }
 }
 
