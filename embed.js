@@ -34,7 +34,7 @@
     var link = document.createElement('link');
     link.id = 'ithaque-10ans-styles';
     link.rel = 'stylesheet';
-    link.href = BASE_URL + 'style.css?v=4';
+    link.href = BASE_URL + 'style.css?v=5';
     document.head.appendChild(link);
 
     // Google Fonts (fail-safe: only load if not already present)
@@ -104,13 +104,68 @@
     ].join('\n');
   }
 
+  function buildArgosHTML() {
+    return [
+      '<div class="ithaque-argos" id="ithaque-argos-section">',
+      '  <div class="ithaque-argos-inner">',
+      '',
+      '    <!-- LEFT: Visual - logo Argosmed + by Ithaque -->',
+      '    <div class="ithaque-argos-visual">',
+      '      <div class="ithaque-argos-logowrap">',
+      '        <img',
+      '          src="' + BASE_URL + 'logo-argosmed-white.svg"',
+      '          alt="Argosmed"',
+      '          class="ithaque-argos-mockup"',
+      '        >',
+      '        <div class="ithaque-argos-by">',
+      '          <span class="ithaque-argos-by-text">by</span>',
+      '          <img',
+      '            src="https://medical.ithaque-compagnie.fr/wp-content/uploads/sites/3/2017/07/logo_ithaque_medical.svg"',
+      '            alt="Ithaque Médical"',
+      '            class="ithaque-argos-by-logo"',
+      '          >',
+      '        </div>',
+      '      </div>',
+      '    </div>',
+      '',
+      '    <!-- RIGHT: Content -->',
+      '    <div class="ithaque-argos-content">',
+      '      <h2 class="ithaque-argos-title">Argosmed, l’innovation 100% Ithaque</h2>',
+      '      <p class="ithaque-argos-text">',
+      '        La plateforme qui connecte médecins du travail vacataires',
+      '        et services de santé au travail partout en France.',
+      '      </p>',
+      '      <ul class="ithaque-argos-list">',
+      '        <li>Recherche de vacations en quelques clics, matching intelligent</li>',
+      '        <li>Gestion administrative simplifiée — contrats, plannings, paiements</li>',
+      '        <li>Accompagnement humain Ithaque à chaque étape de la mission</li>',
+      '        <li>Couverture nationale, 100 % gratuit pour les médecins</li>',
+      '      </ul>',
+      '      <a',
+      '        href="https://www.argosmed.fr"',
+      '        target="_blank"',
+      '        rel="noopener"',
+      '        class="ithaque-argos-btn"',
+      '      >Découvrir Argosmed &rsaquo;</a>',
+      '    </div>',
+      '',
+      '  </div>',
+      '  <div class="ithaque-argos-accent-bar"></div>',
+      '</div>'
+    ].join('\n');
+  }
+
   function injectHTML() {
+    // Évite la double-injection de la section Argos
+    if (document.getElementById('ithaque-argos-section')) return;
+
+    var combinedHTML = buildHTML() + '\n' + buildArgosHTML();
     var target = document.getElementById('ithaque-10ans-embed');
     if (target) {
-      target.innerHTML = buildHTML();
+      target.innerHTML = combinedHTML;
     } else {
       // Fallback: insert before </body>
-      document.body.insertAdjacentHTML('beforeend', buildHTML());
+      document.body.insertAdjacentHTML('beforeend', combinedHTML);
     }
   }
 
