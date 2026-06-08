@@ -242,3 +242,175 @@
     font-size: 20px;
   }
 }
+
+/* ================================================
+   Section Argos — présentation de la plateforme
+   Embed-safe, scoped to .ithaque-argos
+   ================================================ */
+
+.ithaque-argos {
+  --argos-dark: #160E25;
+  --argos-bleu: #CEE7EE;
+  --text-body: #3d4f4f;
+  --font-heading: 'Raleway', sans-serif;
+  --font-body: 'Open Sans', sans-serif;
+
+  width: 100%;
+  background: #ffffff;
+  box-sizing: border-box;
+  font-family: var(--font-body);
+}
+
+.ithaque-argos *,
+.ithaque-argos *::before,
+.ithaque-argos *::after {
+  box-sizing: border-box;
+}
+
+.ithaque-argos-inner {
+  display: grid;
+  grid-template-columns: 55% 45%;
+  align-items: stretch;
+}
+
+/* ── Left visual ── */
+.ithaque-argos-visual {
+  background: var(--argos-bleu);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 50px 40px;
+  position: relative;
+  min-height: 340px;
+}
+
+.ithaque-argos-mockup {
+  width: 100%;
+  max-width: 480px;
+  height: auto;
+  display: block;
+}
+
+/* ── Right content ── */
+.ithaque-argos-content {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  justify-content: center;
+  padding: 60px 64px 60px 56px;
+  background: #ffffff;
+  position: relative;
+}
+
+.ithaque-argos-content::before {
+  content: '';
+  position: absolute;
+  left: 0;
+  top: 10%;
+  height: 80%;
+  width: 1px;
+  background: linear-gradient(to bottom, transparent, #d0e8e8 20%, #d0e8e8 80%, transparent);
+}
+
+.ithaque-argos-logo {
+  height: 38px;
+  width: auto;
+  margin-bottom: 24px;
+  display: block;
+  align-self: flex-start;
+}
+
+.ithaque-argos-title {
+  font-family: var(--font-heading);
+  font-size: clamp(22px, 2.4vw, 30px);
+  font-weight: 800;
+  color: var(--argos-dark);
+  line-height: 1.25;
+  margin: 0 0 20px 0;
+  letter-spacing: -0.3px;
+}
+
+.ithaque-argos-text {
+  font-family: var(--font-body);
+  font-size: clamp(13px, 1vw, 15px);
+  color: var(--text-body);
+  line-height: 1.75;
+  margin: 0 0 14px 0;
+}
+
+.ithaque-argos-text:last-of-type {
+  margin-bottom: 32px;
+}
+
+.ithaque-argos-btn {
+  display: inline-flex !important;
+  align-items: center !important;
+  gap: 8px !important;
+  background: var(--argos-dark) !important;
+  color: #ffffff !important;
+  border: 2px solid var(--argos-dark) !important;
+  border-radius: 30px !important;
+  padding: 12px 28px !important;
+  font-family: var(--font-heading) !important;
+  font-size: 14px !important;
+  font-weight: 700 !important;
+  letter-spacing: 0.5px !important;
+  text-decoration: none !important;
+  cursor: pointer !important;
+  transition: background 0.25s, transform 0.15s !important;
+  align-self: flex-start !important;
+  box-shadow: none !important;
+  outline: none !important;
+}
+
+.ithaque-argos-btn:hover,
+.ithaque-argos-btn:focus {
+  background: #0d0819 !important;
+  color: #ffffff !important;
+  transform: translateX(3px) !important;
+  text-decoration: none !important;
+  border-color: #0d0819 !important;
+  box-shadow: none !important;
+}
+
+/* ── Bottom Argos accent bar ── */
+.ithaque-argos-accent-bar {
+  height: 6px;
+  background: var(--argos-dark) !important;
+}
+
+/* ── Responsive ── */
+@media (max-width: 900px) {
+  .ithaque-argos-inner {
+    grid-template-columns: 1fr;
+  }
+
+  .ithaque-argos-content {
+    padding: 48px 32px 40px;
+    order: 2;
+  }
+
+  .ithaque-argos-content::before {
+    display: none;
+  }
+
+  .ithaque-argos-visual {
+    order: 1;
+    padding: 36px 24px;
+    min-height: 280px;
+  }
+
+  .ithaque-argos-mockup {
+    max-width: 280px;
+  }
+}
+
+@media (max-width: 480px) {
+  .ithaque-argos-content {
+    padding: 36px 20px 32px;
+  }
+
+  .ithaque-argos-title {
+    font-size: 20px;
+  }
+}
