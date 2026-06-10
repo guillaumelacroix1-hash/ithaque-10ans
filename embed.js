@@ -34,7 +34,7 @@
     var link = document.createElement('link');
     link.id = 'ithaque-10ans-styles';
     link.rel = 'stylesheet';
-    link.href = BASE_URL + 'style.css?v=5';
+    link.href = BASE_URL + 'style.css?v=6';
     document.head.appendChild(link);
 
     // Google Fonts (fail-safe: only load if not already present)
@@ -132,13 +132,13 @@
       '    <div class="ithaque-argos-content">',
       '      <h2 class="ithaque-argos-title">Argosmed, l’innovation 100% Ithaque</h2>',
       '      <p class="ithaque-argos-text">',
-      '        La plateforme qui connecte médecins du travail vacataires',
+      '        La plateforme qui connecte médecins du travail',
       '        et services de santé au travail partout en France.',
       '      </p>',
       '      <ul class="ithaque-argos-list">',
       '        <li>Recherche de vacations en quelques clics, matching intelligent</li>',
-      '        <li>Gestion administrative simplifiée — contrats, plannings, paiements</li>',
-      '        <li>Accompagnement humain Ithaque à chaque étape de la mission</li>',
+      '        <li>Gestion administrative simplifiée : disponibilités, plannings et contrats</li>',
+      '        <li>Accompagnement humain par les experts Ithaque à chaque étape de la mission</li>',
       '        <li>Couverture nationale, 100 % gratuit pour les médecins</li>',
       '      </ul>',
       '      <a',

@@ -364,7 +364,9 @@
   margin: 0 0 20px 0;
 }
 
-/* Bullet list — checkmarks dans une pastille bleue Argosmed */
+/* Bullet list — pas de marqueur graphique avant les puces, juste un
+   espacement clair entre les items (demande Guillaume : le point n'apporte
+   pas de valeur ajoutée). */
 .ithaque-argos-list {
   list-style: none;
   margin: 0 0 32px 0;
@@ -372,28 +374,11 @@
 }
 
 .ithaque-argos-list li {
-  position: relative;
-  padding-left: 32px;
-  margin-bottom: 12px;
+  margin-bottom: 10px;
   font-family: var(--font-body);
   font-size: clamp(14px, 1.05vw, 16px);
   color: var(--text-body);
   line-height: 1.55;
-}
-
-.ithaque-argos-list li::before {
-  content: '';
-  position: absolute;
-  left: 0;
-  top: 4px;
-  width: 18px;
-  height: 18px;
-  border-radius: 50%;
-  background-color: var(--argos-bleu);
-  background-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%23160E25' stroke-width='4' stroke-linecap='round' stroke-linejoin='round'><polyline points='20 6 9 17 4 12'/></svg>");
-  background-size: 11px 11px;
-  background-position: center;
-  background-repeat: no-repeat;
 }
 
 .ithaque-argos-btn {
