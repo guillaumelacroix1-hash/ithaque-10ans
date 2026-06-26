@@ -6,7 +6,7 @@
 (function () {
   'use strict';
 
-  var VIDEO_ID = '_p-57K78HXQ';
+  var VIDEO_ID = 'NG4WVAnKl68';
   var player = null;
   var isMuted = true;
   var isIOS = /iPad|iPhone|iPod/.test(navigator.userAgent) || (navigator.platform === 'MacIntel' && navigator.maxTouchPoints > 1);
