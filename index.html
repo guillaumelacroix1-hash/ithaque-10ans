@@ -4,7 +4,7 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Ithaque Médical – 10 ans · Preview</title>
-  <link rel="stylesheet" href="style.css?v=4">
+  <link rel="stylesheet" href="style.css?v=7">
   <style>
     body { margin: 0; padding: 0; }
     /* Critical: prevent logo flash at native SVG size before style.css loads */
@@ -75,6 +75,81 @@
     </div>
     <div class="ithaque-accent-bar"></div>
   </div>
+
+  <!-- ═══════════════════════════════════
+       Section Film : « Ithaque Médical en images »
+       ═══════════════════════════════════ -->
+  <div class="ithaque-film" id="ithaque-film-section">
+
+    <!-- Décor « carte marine » -->
+    <svg class="ithaque-film-lines" viewBox="0 0 1440 640" preserveAspectRatio="xMidYMid slice" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+      <g fill="none" stroke="#5FB4A9" stroke-width="1.5">
+        <path d="M -40 500 C 240 420 420 470 640 380 S 1060 220 1250 190 T 1500 120" stroke-dasharray="2 14" stroke-width="2.5" stroke-linecap="round"></path>
+        <circle cx="90" cy="466" r="5"></circle>
+        <path d="M 1338 160 l 14 14 M 1352 160 l -14 14" stroke-width="2"></path>
+        <g transform="translate(1210 90)">
+          <circle r="120" stroke-dasharray="1 10"></circle>
+          <circle r="86" opacity=".7"></circle>
+          <circle r="8"></circle>
+          <path d="M 0 -150 V -96 M 0 96 V 150 M -150 0 H -96 M 96 0 H 150" stroke-width="1"></path>
+          <path d="M 0 -34 L 9 0 L 0 34 L -9 0 Z" stroke-width="1.2"></path>
+        </g>
+        <path d="M -60 620 Q 160 540 360 600 T 760 640" opacity=".8"></path>
+        <path d="M -60 660 Q 180 570 400 630 T 820 690" opacity=".55"></path>
+        <path d="M -40 560 Q 120 510 280 552" opacity=".5"></path>
+        <g transform="translate(320 200)" opacity=".8">
+          <path d="M -34 12 Q -14 -22 4 -4 Q 16 -18 34 10 Z"></path>
+          <path d="M -46 20 H 46" stroke-dasharray="1 8" stroke-linecap="round" stroke-width="2"></path>
+        </g>
+        <g stroke-width="1.5" opacity=".9">
+          <path d="M 560 160 h 12 M 566 154 v 12"></path>
+          <path d="M 880 480 h 12 M 886 474 v 12"></path>
+          <path d="M 1080 350 h 12 M 1086 344 v 12"></path>
+          <path d="M 180 320 h 12 M 186 314 v 12"></path>
+          <path d="M 700 90 h 12 M 706 84 v 12"></path>
+        </g>
+        <g stroke-width="1.5" stroke-linecap="round" opacity=".8">
+          <path d="M 470 120 q 7 -7 14 0 M 486 113 q 6 -6 12 0"></path>
+          <path d="M 960 250 q 7 -7 14 0"></path>
+        </g>
+      </g>
+    </svg>
+
+    <div class="ithaque-film-inner">
+
+      <!-- LEFT: façade vidéo (poster + play, iframe chargée au clic) -->
+      <div class="ithaque-film-video">
+        <div class="ithaque-film-facade" data-yt-id="F3JqkxdYVsE" data-yt-title="Présentation d’Ithaque Médical">
+          <img src="film-poster.webp" alt="" loading="lazy" width="1280" height="720">
+          <button type="button" class="ithaque-film-play" aria-label="Lire la vidéo : Présentation d’Ithaque Médical">
+            <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M8 5v14l11-7z"/></svg>
+          </button>
+        </div>
+      </div>
+
+      <!-- RIGHT: texte -->
+      <div class="ithaque-film-content">
+        <p class="ithaque-film-label">Le film</p>
+        <h2 class="ithaque-film-title">Ithaque Médical <br><em>en images</em></h2>
+        <p class="ithaque-film-text">
+          Qui sommes-nous, pour qui travaillons-nous, et comment&nbsp;?
+          Quelques minutes pour découvrir le cabinet, son équipe et sa façon
+          de prendre soin de ceux qui prennent soin.
+        </p>
+        <a
+          href="https://medical.ithaque-compagnie.fr/qui-sommes-nous/"
+          target="_blank"
+          rel="noopener"
+          class="ithaque-film-btn"
+        >
+          <span>Rencontrer l’équipe</span>
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" aria-hidden="true"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+        </a>
+      </div>
+
+    </div>
+  </div>
+
 
   <!-- ═══════════════════════════════════════════════
        Section Argos — présentation de la plateforme

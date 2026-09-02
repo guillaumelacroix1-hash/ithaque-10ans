@@ -3,7 +3,7 @@
    Embed-safe CSS (all selectors scoped to .ithaque-10ans)
    ================================================ */
 
-@import url('https://fonts.googleapis.com/css2?family=Raleway:wght@400;600;700;800&family=Open+Sans:wght@400;600&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Raleway:wght@400;600;700;800&family=Open+Sans:ital,wght@0,400;0,600;0,700;0,800;1,700;1,800&display=swap');
 
 .ithaque-10ans {
   --teal: #00989A;
@@ -463,5 +463,239 @@
 
   .ithaque-argos-title {
     font-size: 20px;
+  }
+}
+
+/* ================================================
+   Section Film : « Ithaque Médical en images »
+   Portée depuis ithaque-medical-site (section #film)
+   Embed-safe, scoped to .ithaque-film
+   ================================================ */
+
+.ithaque-film {
+  --film-dark: #0C2330;
+  --film-teal: #5FB4A9;
+  --film-teal-light: #8ECEC8;
+  --film-teal-dark: #3D9990;
+  --film-deep: #00556C;
+  --font-body: 'Open Sans', Helvetica, Arial, sans-serif;
+
+  width: 100%;
+  background: var(--film-dark);
+  box-sizing: border-box;
+  font-family: var(--font-body);
+  padding: 96px 0;
+  position: relative;
+  overflow: hidden;
+}
+
+.ithaque-film *,
+.ithaque-film *::before,
+.ithaque-film *::after {
+  box-sizing: border-box;
+}
+
+/* Halo teal diffus en haut à gauche */
+.ithaque-film::before {
+  content: '';
+  position: absolute;
+  left: -200px;
+  top: -200px;
+  width: 600px;
+  height: 600px;
+  border-radius: 50%;
+  background: radial-gradient(circle, rgba(95, 180, 169, 0.18) 0%, transparent 70%);
+  pointer-events: none;
+  z-index: 0;
+}
+
+/* Décor « carte marine » en fond */
+.ithaque-film-lines {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 0;
+  pointer-events: none;
+  opacity: 0.14;
+}
+
+.ithaque-film-inner {
+  position: relative;
+  z-index: 1;
+  max-width: 1320px;
+  margin: 0 auto;
+  padding: 0 40px;
+  display: grid;
+  grid-template-columns: 1.5fr 1fr;
+  gap: 64px;
+  align-items: center;
+}
+
+/* ── Vidéo (façade YouTube : poster + bouton play) ── */
+.ithaque-film-video {
+  aspect-ratio: 16 / 9;
+  border-radius: 18px;
+  overflow: hidden;
+  background: #000;
+  box-shadow: 0 40px 100px -30px rgba(0, 0, 0, 0.6), 0 0 0 1px rgba(255, 255, 255, 0.08);
+}
+
+.ithaque-film-facade {
+  position: relative;
+  height: 100%;
+  width: 100%;
+  overflow: hidden;
+  background: #000;
+  cursor: pointer;
+}
+
+.ithaque-film-facade img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+  opacity: 0.92;
+  transition: transform 0.6s cubic-bezier(0.16, 1, 0.3, 1), opacity 0.3s;
+}
+
+.ithaque-film-facade:hover img {
+  transform: scale(1.03);
+  opacity: 1;
+}
+
+.ithaque-film-facade iframe {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  border: 0;
+}
+
+.ithaque-film-play {
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+  width: 76px;
+  height: 76px;
+  padding: 0 !important;
+  border-radius: 9999px !important;
+  border: 0 !important;
+  background: linear-gradient(135deg, #5FB4A9 0%, #00556C 100%) !important;
+  color: #ffffff !important;
+  display: grid;
+  place-items: center;
+  cursor: pointer;
+  box-shadow: 0 12px 40px rgba(0, 0, 0, 0.35) !important;
+  transition: transform 0.35s cubic-bezier(0.16, 1, 0.3, 1), box-shadow 0.3s;
+}
+
+.ithaque-film-play svg {
+  margin-left: 4px;
+  width: 26px;
+  height: 26px;
+  fill: currentColor;
+}
+
+.ithaque-film-facade:hover .ithaque-film-play,
+.ithaque-film-play:focus-visible {
+  transform: translate(-50%, -50%) scale(1.08);
+  box-shadow: 0 16px 48px rgba(0, 0, 0, 0.45) !important;
+}
+
+/* ── Texte ── */
+.ithaque-film-label {
+  display: inline-block;
+  font-family: var(--font-body);
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 2.5px;
+  text-transform: uppercase;
+  color: var(--film-teal-light);
+  margin: 0 0 16px 0;
+}
+
+.ithaque-film-title {
+  font-family: var(--font-body);
+  font-size: clamp(28px, 2.8vw, 42px);
+  font-weight: 800;
+  color: #ffffff;
+  line-height: 1.15;
+  letter-spacing: -0.02em;
+  margin: 0 0 16px 0;
+}
+
+.ithaque-film-title em {
+  font-style: italic;
+  color: var(--film-teal-dark);
+}
+
+.ithaque-film-text {
+  font-family: var(--font-body);
+  font-size: clamp(14px, 1.05vw, 16px);
+  color: rgba(255, 255, 255, 0.68);
+  line-height: 1.8;
+  margin: 0 0 24px 0;
+}
+
+.ithaque-film-btn {
+  display: inline-flex !important;
+  align-items: center !important;
+  gap: 8px !important;
+  padding: 12px 26px !important;
+  border-radius: 9999px !important;
+  border: 1.5px solid rgba(255, 255, 255, 0.35) !important;
+  background: transparent !important;
+  color: #ffffff !important;
+  font-family: var(--font-body) !important;
+  font-size: 14px !important;
+  font-weight: 700 !important;
+  letter-spacing: 0.02em !important;
+  text-decoration: none !important;
+  cursor: pointer !important;
+  transition: background 0.25s, border-color 0.25s, transform 0.25s cubic-bezier(0.16, 1, 0.3, 1) !important;
+  box-shadow: none !important;
+  outline: none !important;
+}
+
+.ithaque-film-btn:hover,
+.ithaque-film-btn:focus {
+  background: rgba(255, 255, 255, 0.12) !important;
+  border-color: #ffffff !important;
+  color: #ffffff !important;
+  transform: translateY(-2px) !important;
+  text-decoration: none !important;
+  box-shadow: none !important;
+}
+
+.ithaque-film-btn svg {
+  width: 16px;
+  height: 16px;
+  flex-shrink: 0;
+}
+
+/* ── Responsive ── */
+@media (max-width: 900px) {
+  .ithaque-film {
+    padding: 64px 0;
+  }
+
+  .ithaque-film-inner {
+    grid-template-columns: 1fr;
+    gap: 40px;
+    padding: 0 24px;
+  }
+}
+
+@media (max-width: 600px) {
+  .ithaque-film-play {
+    width: 60px;
+    height: 60px;
+  }
+
+  .ithaque-film-play svg {
+    width: 22px;
+    height: 22px;
   }
 }
