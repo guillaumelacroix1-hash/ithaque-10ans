@@ -1,470 +1,9 @@
 /* ================================================
-   Ithaque Médical – Section 10 ans
-   Embed-safe CSS (all selectors scoped to .ithaque-10ans)
+   Ithaque Médical – CSS des sections embarquables
+   Embed-safe : tous les sélecteurs sont scopés (.ithaque-film, .ithaque-argos)
    ================================================ */
 
 @import url('https://fonts.googleapis.com/css2?family=Raleway:wght@400;600;700;800&family=Open+Sans:ital,wght@0,400;0,600;0,700;0,800;1,700;1,800&display=swap');
-
-.ithaque-10ans {
-  --teal: #00989A;
-  --teal-dark: #007a7c;
-  --teal-light: #e6f7f7;
-  --text-dark: #1c2b2b;
-  --text-body: #3d4f4f;
-  --bg: #ffffff;
-  --font-heading: 'Raleway', sans-serif;
-  --font-body: 'Open Sans', sans-serif;
-
-  width: 100%;
-  background: var(--bg);
-  box-sizing: border-box;
-  font-family: var(--font-body);
-}
-
-.ithaque-10ans *,
-.ithaque-10ans *::before,
-.ithaque-10ans *::after {
-  box-sizing: border-box;
-}
-
-/* ── Layout grid ── */
-.ithaque-inner {
-  display: grid;
-  grid-template-columns: 45% 55%;
-  align-items: stretch;
-}
-
-/* ── Left panel ── */
-.ithaque-left {
-  display: flex;
-  flex-direction: column;
-  align-items: flex-start;
-  justify-content: center;
-  padding: 60px 56px 60px 64px;
-  background: #ffffff;
-  position: relative;
-}
-
-.ithaque-left::after {
-  content: '';
-  position: absolute;
-  right: 0;
-  top: 10%;
-  height: 80%;
-  width: 1px;
-  background: linear-gradient(to bottom, transparent, #d0e8e8 20%, #d0e8e8 80%, transparent);
-}
-
-.ithaque-logo {
-  height: 52px;
-  width: auto;
-  margin-bottom: 28px;
-  display: block;
-  align-self: flex-start;
-}
-
-.ithaque-title {
-  font-family: var(--font-heading);
-  font-size: clamp(22px, 2.4vw, 30px);
-  font-weight: 800;
-  color: var(--teal);
-  line-height: 1.25;
-  margin: 0 0 20px 0;
-  letter-spacing: -0.3px;
-}
-
-.ithaque-text {
-  font-family: var(--font-body);
-  font-size: clamp(13px, 1vw, 15px);
-  color: var(--text-body);
-  line-height: 1.75;
-  margin: 0 0 14px 0;
-}
-
-.ithaque-text:last-of-type {
-  margin-bottom: 32px;
-}
-
-.ithaque-btn {
-  display: inline-flex !important;
-  align-items: center !important;
-  gap: 8px !important;
-  background: transparent !important;
-  color: var(--teal) !important;
-  border: 2px solid var(--teal) !important;
-  border-radius: 0 !important;
-  padding: 11px 24px !important;
-  font-family: var(--font-heading) !important;
-  font-size: 14px !important;
-  font-weight: 700 !important;
-  letter-spacing: 0.5px !important;
-  text-decoration: none !important;
-  cursor: pointer !important;
-  transition: background 0.25s, color 0.25s, transform 0.15s !important;
-  align-self: flex-start !important;
-  box-shadow: none !important;
-  outline: none !important;
-}
-
-.ithaque-btn:hover,
-.ithaque-btn:focus {
-  background: var(--teal) !important;
-  color: #ffffff !important;
-  transform: translateX(3px) !important;
-  text-decoration: none !important;
-  border-color: var(--teal) !important;
-  box-shadow: none !important;
-}
-
-/* ── Right panel – video ── */
-.ithaque-right {
-  background: #0d1a1a;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-}
-
-/* 16:9 intrinsic ratio container */
-.ithaque-video-container {
-  position: relative;
-  width: 100%;
-}
-
-.ithaque-video-container::before {
-  content: '';
-  display: block;
-  padding-top: 56.25%; /* 16:9 */
-}
-
-#ithaque-player,
-#ithaque-player iframe {
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 100% !important;
-  height: 100% !important;
-  border: none;
-  pointer-events: none;
-}
-
-/* Controls must sit above the iframe */
-.ithaque-controls {
-  z-index: 20;
-  pointer-events: all;
-}
-
-/* ── Video controls bar ── */
-.ithaque-controls {
-  position: absolute;
-  bottom: 14px;
-  right: 14px;
-  z-index: 10;
-  display: flex;
-  gap: 8px;
-  align-items: center;
-}
-
-.ithaque-ctrl-btn {
-  width: 40px;
-  height: 40px;
-  border-radius: 50%;
-  background: rgba(0, 0, 0, 0.55);
-  border: 2px solid rgba(255, 255, 255, 0.3);
-  color: #ffffff;
-  cursor: pointer;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  transition: background 0.2s, border-color 0.2s, transform 0.15s;
-  backdrop-filter: blur(4px);
-  -webkit-backdrop-filter: blur(4px);
-  padding: 0;
-  flex-shrink: 0;
-}
-
-.ithaque-ctrl-btn:hover {
-  background: rgba(0, 152, 154, 0.75);
-  border-color: rgba(255, 255, 255, 0.7);
-  transform: scale(1.1);
-}
-
-.ithaque-ctrl-btn svg {
-  width: 18px;
-  height: 18px;
-  fill: currentColor;
-}
-
-/* Sound toggle */
-.ithaque-sound-btn .icon-unmuted {
-  display: none;
-}
-
-.ithaque-sound-btn.is-unmuted .icon-muted {
-  display: none;
-}
-
-.ithaque-sound-btn.is-unmuted .icon-unmuted {
-  display: block;
-}
-
-/* ── Bottom teal accent bar ── */
-.ithaque-accent-bar {
-  height: 6px;
-  background: #5FB4A9 !important;
-}
-
-/* ── Responsive ── */
-@media (max-width: 900px) {
-  .ithaque-inner {
-    grid-template-columns: 1fr;
-  }
-
-  .ithaque-left {
-    padding: 48px 32px 40px;
-    order: 2;
-  }
-
-  .ithaque-left::after {
-    display: none;
-  }
-
-  .ithaque-right {
-    order: 1;
-  }
-}
-
-@media (max-width: 480px) {
-  .ithaque-left {
-    padding: 36px 20px 32px;
-  }
-
-  .ithaque-title {
-    font-size: 20px;
-  }
-}
-
-/* ================================================
-   Section Argos — présentation de la plateforme
-   Embed-safe, scoped to .ithaque-argos
-   ================================================ */
-
-.ithaque-argos {
-  --argos-dark: #160E25;
-  --argos-bleu: #CEE7EE;
-  --text-body: #3d4f4f;
-  --font-heading: 'Raleway', sans-serif;
-  --font-body: 'Open Sans', sans-serif;
-
-  width: 100%;
-  background: #ffffff;
-  box-sizing: border-box;
-  font-family: var(--font-body);
-}
-
-.ithaque-argos *,
-.ithaque-argos *::before,
-.ithaque-argos *::after {
-  box-sizing: border-box;
-}
-
-.ithaque-argos-inner {
-  display: grid;
-  grid-template-columns: 55% 45%;
-  align-items: stretch;
-}
-
-/* ── Left visual ── */
-.ithaque-argos-visual {
-  background: var(--argos-bleu);
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  padding: 50px 40px;
-  position: relative;
-  min-height: 340px;
-}
-
-/* Wrapper du logo + badge — largeur fixe pour aligner les éléments
-   verticalement (la fin du logo Ithaque Médical s'aligne sur le D
-   d'ARGOSMED grâce au justify-content: flex-end du .ithaque-argos-by). */
-.ithaque-argos-logowrap {
-  display: flex;
-  flex-direction: column;
-  width: 100%;
-  max-width: 320px;
-}
-
-.ithaque-argos-mockup {
-  width: 100%;
-  height: auto;
-  display: block;
-  aspect-ratio: 1 / 1;
-}
-
-/* "by Ithaque Médical" — aligné à droite, fin alignée sur le D d'ARGOSMED */
-.ithaque-argos-by {
-  margin-top: 14px;
-  display: flex;
-  justify-content: flex-end;
-  align-items: center;
-  gap: 8px;
-}
-
-.ithaque-argos-by-text {
-  font-family: var(--font-body);
-  font-size: 13px;
-  font-weight: 400;
-  font-style: italic;
-  color: #5a6868;
-  letter-spacing: 0.2px;
-}
-
-.ithaque-argos-by-logo {
-  height: 22px;
-  width: auto;
-  display: block;
-}
-
-/* ── Right content ── */
-.ithaque-argos-content {
-  display: flex;
-  flex-direction: column;
-  align-items: flex-start;
-  justify-content: center;
-  padding: 60px 64px 60px 56px;
-  background: #ffffff;
-  position: relative;
-}
-
-.ithaque-argos-content::before {
-  content: '';
-  position: absolute;
-  left: 0;
-  top: 10%;
-  height: 80%;
-  width: 1px;
-  background: linear-gradient(to bottom, transparent, #d0e8e8 20%, #d0e8e8 80%, transparent);
-}
-
-.ithaque-argos-title {
-  font-family: var(--font-heading);
-  font-size: clamp(24px, 2.6vw, 32px);
-  font-weight: 800;
-  color: var(--argos-dark);
-  line-height: 1.2;
-  margin: 0 0 20px 0;
-  letter-spacing: -0.3px;
-}
-
-.ithaque-argos-text {
-  font-family: var(--font-body);
-  font-size: clamp(14px, 1.05vw, 16px);
-  color: var(--text-body);
-  line-height: 1.7;
-  margin: 0 0 20px 0;
-}
-
-/* Bullet list — pas de marqueur graphique avant les puces, juste un
-   espacement clair entre les items (demande Guillaume : le point n'apporte
-   pas de valeur ajoutée). */
-.ithaque-argos-list {
-  list-style: none;
-  margin: 0 0 32px 0;
-  padding: 0;
-}
-
-.ithaque-argos-list li {
-  margin-bottom: 10px;
-  font-family: var(--font-body);
-  font-size: clamp(14px, 1.05vw, 16px);
-  color: var(--text-body);
-  line-height: 1.55;
-}
-
-.ithaque-argos-btn {
-  display: inline-flex !important;
-  align-items: center !important;
-  gap: 8px !important;
-  background: var(--argos-dark) !important;
-  color: #ffffff !important;
-  border: 2px solid var(--argos-dark) !important;
-  border-radius: 30px !important;
-  padding: 12px 28px !important;
-  font-family: var(--font-heading) !important;
-  font-size: 14px !important;
-  font-weight: 700 !important;
-  letter-spacing: 0.5px !important;
-  text-decoration: none !important;
-  cursor: pointer !important;
-  transition: background 0.25s, transform 0.15s !important;
-  align-self: flex-start !important;
-  box-shadow: none !important;
-  outline: none !important;
-}
-
-.ithaque-argos-btn:hover,
-.ithaque-argos-btn:focus {
-  background: #0d0819 !important;
-  color: #ffffff !important;
-  transform: translateX(3px) !important;
-  text-decoration: none !important;
-  border-color: #0d0819 !important;
-  box-shadow: none !important;
-}
-
-/* ── Bottom Argos accent bar ── */
-.ithaque-argos-accent-bar {
-  height: 6px;
-  background: var(--argos-dark) !important;
-}
-
-/* ── Responsive ── */
-@media (max-width: 900px) {
-  .ithaque-argos-inner {
-    grid-template-columns: 1fr;
-  }
-
-  .ithaque-argos-content {
-    padding: 48px 32px 40px;
-    order: 2;
-  }
-
-  .ithaque-argos-content::before {
-    display: none;
-  }
-
-  .ithaque-argos-visual {
-    order: 1;
-    padding: 40px 24px;
-    min-height: 280px;
-  }
-
-  .ithaque-argos-logowrap {
-    max-width: 220px;
-  }
-
-  .ithaque-argos-by {
-    margin-top: 10px;
-  }
-
-  .ithaque-argos-by-logo {
-    height: 18px;
-  }
-
-  .ithaque-argos-by-text {
-    font-size: 12px;
-  }
-}
-
-@media (max-width: 480px) {
-  .ithaque-argos-content {
-    padding: 36px 20px 32px;
-  }
-
-  .ithaque-argos-title {
-    font-size: 20px;
-  }
-}
 
 /* ================================================
    Section Film : « Ithaque Médical en images »
@@ -697,5 +236,228 @@
   .ithaque-film-play svg {
     width: 22px;
     height: 22px;
+  }
+}
+
+/* ================================================
+   Section Argos — présentation de la plateforme
+   Embed-safe, scoped to .ithaque-argos
+   ================================================ */
+
+.ithaque-argos {
+  --argos-dark: #160E25;
+  --argos-bleu: #CEE7EE;
+  --text-body: #3d4f4f;
+  --font-heading: 'Raleway', sans-serif;
+  --font-body: 'Open Sans', sans-serif;
+
+  width: 100%;
+  background: #ffffff;
+  box-sizing: border-box;
+  font-family: var(--font-body);
+}
+
+.ithaque-argos *,
+.ithaque-argos *::before,
+.ithaque-argos *::after {
+  box-sizing: border-box;
+}
+
+.ithaque-argos-inner {
+  display: grid;
+  grid-template-columns: 55% 45%;
+  align-items: stretch;
+}
+
+/* ── Left visual ── */
+.ithaque-argos-visual {
+  background: var(--argos-bleu);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 50px 40px;
+  position: relative;
+  min-height: 340px;
+}
+
+/* Wrapper du logo + badge — largeur fixe pour aligner les éléments
+   verticalement (la fin du logo Ithaque Médical s'aligne sur le D
+   d'ARGOSMED grâce au justify-content: flex-end du .ithaque-argos-by). */
+.ithaque-argos-logowrap {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  max-width: 320px;
+}
+
+.ithaque-argos-mockup {
+  width: 100%;
+  height: auto;
+  display: block;
+  aspect-ratio: 1 / 1;
+}
+
+/* "by Ithaque Médical" — aligné à droite, fin alignée sur le D d'ARGOSMED */
+.ithaque-argos-by {
+  margin-top: 14px;
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+  gap: 8px;
+}
+
+.ithaque-argos-by-text {
+  font-family: var(--font-body);
+  font-size: 13px;
+  font-weight: 400;
+  font-style: italic;
+  color: #5a6868;
+  letter-spacing: 0.2px;
+}
+
+.ithaque-argos-by-logo {
+  height: 22px;
+  width: auto;
+  display: block;
+}
+
+/* ── Right content ── */
+.ithaque-argos-content {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  justify-content: center;
+  padding: 60px 64px 60px 56px;
+  background: #ffffff;
+  position: relative;
+}
+
+.ithaque-argos-content::before {
+  content: '';
+  position: absolute;
+  left: 0;
+  top: 10%;
+  height: 80%;
+  width: 1px;
+  background: linear-gradient(to bottom, transparent, #d0e8e8 20%, #d0e8e8 80%, transparent);
+}
+
+.ithaque-argos-title {
+  font-family: var(--font-heading);
+  font-size: clamp(24px, 2.6vw, 32px);
+  font-weight: 800;
+  color: var(--argos-dark);
+  line-height: 1.2;
+  margin: 0 0 20px 0;
+  letter-spacing: -0.3px;
+}
+
+.ithaque-argos-text {
+  font-family: var(--font-body);
+  font-size: clamp(14px, 1.05vw, 16px);
+  color: var(--text-body);
+  line-height: 1.7;
+  margin: 0 0 20px 0;
+}
+
+/* Bullet list — pas de marqueur graphique avant les puces, juste un
+   espacement clair entre les items (demande Guillaume : le point n'apporte
+   pas de valeur ajoutée). */
+.ithaque-argos-list {
+  list-style: none;
+  margin: 0 0 32px 0;
+  padding: 0;
+}
+
+.ithaque-argos-list li {
+  margin-bottom: 10px;
+  font-family: var(--font-body);
+  font-size: clamp(14px, 1.05vw, 16px);
+  color: var(--text-body);
+  line-height: 1.55;
+}
+
+.ithaque-argos-btn {
+  display: inline-flex !important;
+  align-items: center !important;
+  gap: 8px !important;
+  background: var(--argos-dark) !important;
+  color: #ffffff !important;
+  border: 2px solid var(--argos-dark) !important;
+  border-radius: 30px !important;
+  padding: 12px 28px !important;
+  font-family: var(--font-heading) !important;
+  font-size: 14px !important;
+  font-weight: 700 !important;
+  letter-spacing: 0.5px !important;
+  text-decoration: none !important;
+  cursor: pointer !important;
+  transition: background 0.25s, transform 0.15s !important;
+  align-self: flex-start !important;
+  box-shadow: none !important;
+  outline: none !important;
+}
+
+.ithaque-argos-btn:hover,
+.ithaque-argos-btn:focus {
+  background: #0d0819 !important;
+  color: #ffffff !important;
+  transform: translateX(3px) !important;
+  text-decoration: none !important;
+  border-color: #0d0819 !important;
+  box-shadow: none !important;
+}
+
+/* ── Bottom Argos accent bar ── */
+.ithaque-argos-accent-bar {
+  height: 6px;
+  background: var(--argos-dark) !important;
+}
+
+/* ── Responsive ── */
+@media (max-width: 900px) {
+  .ithaque-argos-inner {
+    grid-template-columns: 1fr;
+  }
+
+  .ithaque-argos-content {
+    padding: 48px 32px 40px;
+    order: 2;
+  }
+
+  .ithaque-argos-content::before {
+    display: none;
+  }
+
+  .ithaque-argos-visual {
+    order: 1;
+    padding: 40px 24px;
+    min-height: 280px;
+  }
+
+  .ithaque-argos-logowrap {
+    max-width: 220px;
+  }
+
+  .ithaque-argos-by {
+    margin-top: 10px;
+  }
+
+  .ithaque-argos-by-logo {
+    height: 18px;
+  }
+
+  .ithaque-argos-by-text {
+    font-size: 12px;
+  }
+}
+
+@media (max-width: 480px) {
+  .ithaque-argos-content {
+    padding: 36px 20px 32px;
+  }
+
+  .ithaque-argos-title {
+    font-size: 20px;
   }
 }
